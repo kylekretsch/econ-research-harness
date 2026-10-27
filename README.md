@@ -39,7 +39,7 @@ notes/                        research_log, claims_ledger, referee2 reports
 
 ```bash
 git clone https://github.com/kylekretsch/econ-research-harness && cd econ-research-harness
-python3.12 -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate   # Python >= 3.10; tested on 3.14
 pip install -e ".[dev]"
 pytask          # runs the example staggered-DiD pipeline
 pytest
