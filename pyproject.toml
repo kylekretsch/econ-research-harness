@@ -1,0 +1,36 @@
+[project]
+name = "econ"
+version = "0.1.0"
+description = "Claude Code harness for applied economics research"
+requires-python = ">=3.10"
+dependencies = [
+    "duckdb>=1.0",
+    "pandas>=2.0",
+    "pyarrow>=15",
+    "polars>=1.0",
+    "pyfixest>=0.30",
+    "linearmodels>=6.0",
+    "statsmodels>=0.14",
+    "matplotlib>=3.8",
+    "openpyxl",
+    "pytask>=0.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff", "jupyterlab"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytask.ini_options]
+paths = ["src/econ"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 130

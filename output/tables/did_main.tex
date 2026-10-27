@@ -1,0 +1,35 @@
+\begin{threeparttable}
+\begingroup
+\renewcommand\cellalign{t}
+\renewcommand\arraystretch{1}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}l>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+\toprule
+ & \multicolumn{1}{c}{y} & \multicolumn{1}{c}{y_hat} \\
+\cmidrule(lr){2-2} \cmidrule(lr){3-3}
+ & (1) & (2) \\
+\midrule
+\addlinespace[1ex]
+Treated $\times$ Post & \makecell{1.933*** \\ (0.129)} & \makecell{1.932*** \\ (0.131)} \\
+\addlinespace[0.5ex]
+\midrule
+\addlinespace[1ex]
+state & - & - \\
+\addlinespace[0.5ex]
+\addlinespace[0.5ex]
+year & - & - \\
+\addlinespace[0.5ex]
+\midrule
+\addlinespace[1ex]
+Observations & 1,050 & 1,050 \\
+\addlinespace[0.5ex]
+\addlinespace[0.5ex]
+$R^2$ & 0.881 & 0.394 \\
+\addlinespace[0.5ex]
+\bottomrule
+\end{tabularx}
+\endgroup
+\noindent\begin{minipage}{\linewidth}\smallskip\footnotesize
+Significance levels: * p < 0.05, ** p < 0.01, *** p < 0.001. Format of coefficient cell: Coefficient   (Std. Error)\end{minipage}
+
+\end{threeparttable}

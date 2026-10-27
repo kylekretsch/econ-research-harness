@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,graphicx,amsmath,makecell,threeparttable}
+\usepackage[authoryear]{natbib}
+\usepackage{hyperref}
+\input{../output/tables/numbers.tex}
+
+\title{Title}
+\author{Kyle Kretsch}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Abstract.
+\end{abstract}
+
+\section{Introduction}
+\section{Data}
+\section{Empirical strategy}
+
+\section{Results}
+The two-way fixed effects estimate is \twfeEffect{} (SE \twfeSE{}; $N=\nObs$).
+
+\begin{table}[htbp]\centering
+\caption{Main difference-in-differences estimates}
+\input{../output/tables/did_main.tex}
+\end{table}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.8\textwidth]{../output/figures/event_study.pdf}
+\caption{Event study}
+\end{figure}
+
+\section{Conclusion}
+
+\bibliographystyle{aea}
+\bibliography{refs}
+\end{document}

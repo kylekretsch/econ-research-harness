@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytask/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Data: keep raw data out of the public repo (except the synthetic example)
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/example/
+data/lake/*.parquet
+data/clean/*.parquet
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.synctex.gz
+pytask.lock
