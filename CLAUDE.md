@@ -29,6 +29,7 @@ Every number you report must be traceable to code that ran against data in this 
 ## Econometric conventions
 
 - Default estimator library: `pyfixest` (feols/fepois, event studies, wild bootstrap). `linearmodels` for IV-GMM / panel extras.
+- Write pyfixest fixed effects **without spaces** (`| state+year`): pyfixest 0.60 mis-parses `state + year`, changing SEs and hiding FE rows in tables.
 - Cluster standard errors at the level of treatment assignment unless argued otherwise; state the choice.
 - Staggered DiD: do **not** rely on TWFE alone — report a heterogeneity-robust estimator (e.g. Callaway–Sant'Anna,
   Sun–Abraham, or `pyfixest` `did2s` / `lpdid`) alongside it.
@@ -53,5 +54,5 @@ Every number you report must be traceable to code that ran against data in this 
 python -m venv .venv && source .venv/bin/activate && pip install -e ".[dev]"
 pytask                 # run full pipeline (DAG of src/econ/task_*.py)
 pytest                 # data + pipeline tests
-cd paper && latexmk -pdf main.tex
+cd paper && tectonic -X compile main.tex   # brew install tectonic
 ```

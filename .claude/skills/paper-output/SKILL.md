@@ -14,4 +14,4 @@ description: Write or update the LaTeX paper (paper/main.tex) from generated tab
 - Style: concise economics prose; state magnitudes relative to the mean/SD of the outcome; interpret, don't just report
   significance stars; describe identification before results.
 - Only `\cite{}` keys present in `paper/refs.bib` (verified via the `lit-review` skill).
-- Build with `cd paper && latexmk -pdf main.tex` and fix all warnings about undefined references.
+- Build with `cd paper && tectonic -X compile main.tex` and fix all warnings about undefined references.

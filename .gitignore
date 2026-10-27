@@ -24,3 +24,4 @@ paper/*.fdb_latexmk
 paper/*.fls
 paper/*.synctex.gz
 pytask.lock
+paper/main.pdf

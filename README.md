@@ -47,7 +47,7 @@ claude          # start Claude Code in the project
 ```
 
 The bundled example is a synthetic 50-state staggered DiD with a true effect of **2.0**. TWFE and Gardner's `did2s`
-both recover ≈1.93 (SE ≈0.13). Replace it with your own data via the `ingest-data` skill.
+both recover ≈1.93 (SE ≈0.13). `cd paper && tectonic -X compile main.tex` builds the PDF. Replace it with your own data via the `ingest-data` skill.
 
 ## Typical session
 

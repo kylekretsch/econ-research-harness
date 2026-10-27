@@ -13,8 +13,8 @@ Implement as a pytask task in `src/econ/task_<topic>.py` reading from `data/clea
 ## Design checklists
 
 **DiD / event study** (`pyfixest`)
-- `pf.feols("y ~ treat_post | unit + time", data, vcov={"CRV1": "unit"})`
-- Event study: `pf.feols("y ~ i(rel_time, ref=-1) | unit + time", ...)` → plot with `.iplot()`; report joint pre-trend test.
+- `pf.feols("y ~ treat_post | unit+time", data, vcov={"CRV1": "unit"})`
+- Event study: `pf.feols("y ~ i(rel_time, ref=-1) | unit+time", ...)` → plot with `.iplot()`; report joint pre-trend test.
 - Staggered adoption: also report a robust estimator — `pf.did2s(...)`, `pf.lpdid(...)`, or `pf.event_study(..., estimator="did2s")`.
   Compare to TWFE and explain differences.
 

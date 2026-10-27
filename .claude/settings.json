@@ -5,7 +5,7 @@
       "Bash(pytest:*)",
       "Bash(python:*)",
       "Bash(duckdb:*)",
-      "Bash(latexmk:*)",
+      "Bash(tectonic:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)"

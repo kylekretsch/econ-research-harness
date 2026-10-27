@@ -23,22 +23,34 @@ def task_did_example(
     df = pd.read_parquet(src)
     vcov = {"CRV1": "state"}
 
-    twfe = pf.feols("y ~ treat_post | state + year", data=df, vcov=vcov)
+    # Write fixed effects without spaces ("state+year"): pyfixest 0.60 mis-parses "state + year",
+    # which changes the small-sample SE correction and hides the FE rows in etable.
+    twfe = pf.feols("y ~ treat_post | state+year", data=df, vcov=vcov)
     gardner = pf.did2s(
         df,
         yname="y",
-        first_stage="~ 0 | state + year",
+        first_stage="~ 0 | state+year",
         second_stage="~ treat_post",
         treatment="treat_post",
         cluster="state",
     )
-    table.write_text(pf.etable([twfe, gardner], type="tex", labels={"treat_post": "Treated $\\times$ Post"}))
+    table.write_text(
+        pf.etable(
+            [twfe, gardner],
+            type="tex",
+            labels={"treat_post": "Treated $\\times$ Post", "y": "Outcome", "y_hat": "Outcome"},
+            model_heads=["TWFE", "Gardner (2021) did2s"],
+            felabels={"state": "State FE", "year": "Year FE"},
+            notes="Standard errors clustered by state. Column 2 absorbs state and year FE in the first stage.",
+        )
+    )
 
     # Never-treated units (rel_time == -1000) join the omitted reference period; bin event time to [-6, 6].
     es_df = df.assign(rel_time=df.rel_time.replace(-1000, -1).clip(-6, 6))
-    es = pf.feols("y ~ i(rel_time, ref=-1) | state + year", data=es_df, vcov=vcov)
+    es = pf.feols("y ~ i(rel_time, ref=-1) | state+year", data=es_df, vcov=vcov)
     coefs = es.tidy().reset_index()
-    coefs["k"] = coefs["Coefficient"].str.extract(r"\[T?\.?(-?[\d.]+)\]").astype(float)
+    coefs["k"] = coefs["Coefficient"].str.extract(r"::(-?[\d.]+)$").astype(float)
+    assert coefs["k"].notna().all(), f"could not parse event-time coefficients: {coefs['Coefficient'].tolist()}"
     coefs = pd.concat([coefs, pd.DataFrame({"k": [-1.0], "Estimate": [0.0], "2.5%": [0.0], "97.5%": [0.0]})]).sort_values("k")
     fig, ax = plt.subplots(figsize=(6, 3.5))
     ax.errorbar(coefs.k, coefs.Estimate, yerr=[coefs.Estimate - coefs["2.5%"], coefs["97.5%"] - coefs.Estimate], fmt="o", capsize=3)

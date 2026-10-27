@@ -5,19 +5,21 @@
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}l>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
 \toprule
- & \multicolumn{1}{c}{y} & \multicolumn{1}{c}{y_hat} \\
+ & \multicolumn{2}{c}{Outcome} \\
+\cmidrule(lr){2-3}
+ & \multicolumn{1}{c}{TWFE} & \multicolumn{1}{c}{Gardner (2021) did2s} \\
 \cmidrule(lr){2-2} \cmidrule(lr){3-3}
  & (1) & (2) \\
 \midrule
 \addlinespace[1ex]
-Treated $\times$ Post & \makecell{1.933*** \\ (0.129)} & \makecell{1.932*** \\ (0.131)} \\
+Treated $\times$ Post & \makecell{1.933*** \\ (0.128)} & \makecell{1.932*** \\ (0.131)} \\
 \addlinespace[0.5ex]
 \midrule
 \addlinespace[1ex]
-state & - & - \\
+State FE & x & - \\
 \addlinespace[0.5ex]
 \addlinespace[0.5ex]
-year & - & - \\
+Year FE & x & - \\
 \addlinespace[0.5ex]
 \midrule
 \addlinespace[1ex]
@@ -30,6 +32,6 @@ $R^2$ & 0.881 & 0.394 \\
 \end{tabularx}
 \endgroup
 \noindent\begin{minipage}{\linewidth}\smallskip\footnotesize
-Significance levels: * p < 0.05, ** p < 0.01, *** p < 0.001. Format of coefficient cell: Coefficient   (Std. Error)\end{minipage}
+Standard errors clustered by state. Column 2 absorbs state and year FE in the first stage.\end{minipage}
 
 \end{threeparttable}
