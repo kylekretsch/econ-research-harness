@@ -59,4 +59,4 @@ Claude will ingest → register sources → build with assertions → estimate �
 ## Further reading
 - Paul Goldsmith-Pinkham, [Claude Code for Applied Economists](https://markusacademy.substack.com/p/claude-code-for-applied-economists) (Markus Academy)
 - Scott Cunningham, [Claude Code series](https://causalinf.substack.com/s/claude-code/archive?sort=new) (Causal Inference Mixtape)
-- [Awesome Agent Skills for Empirical Research](https://www.sourcepulse.org/projects/28578978)
+- [Auto-Empirical-Research-Skills](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills) (formerly Awesome-Agent-Skills-for-Empirical-Research): 23,000+ agent skills for empirical social science, by Stanford REAP / CoPaper.AI
